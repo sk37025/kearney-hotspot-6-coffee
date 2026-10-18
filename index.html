@@ -133,7 +133,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
 </head>
 <body>
 <nav aria-label="목차"><div class="wrap">
-  <a href="#summary">요약</a><a href="#map">위치</a><a href="#define">정의</a><a href="#metrics">지표</a><a href="#backtest">백테스트</a>
+  <a href="#summary">요약</a><a href="#map">위치</a><a href="#define">정의</a><a href="#metrics">지표</a>
   <a href="#picks">추천 3곳</a><a href="#concept">1순위 컨셉</a><a href="#risk">리스크</a><a href="#limits">한계</a><a href="#sources">출처</a>
 </div></nav>
 
@@ -228,7 +228,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
       </tbody></table></div></div>
   </div>
   <div class="callout" style="margin-top:14px"><b>읽는 법.</b> <span class="tag">I 해석</span>주변 명동·남대문은 카페가 서울 중앙값의 약 2.4배로 빽빽하지만 점포당 월매출이 서울 평균의 2.6배라, 수요가 모자란 곳이 아니라 수요가 센 과밀 지역입니다. 회현역은 그 옆에서 점포당 매출이 절반 수준이고 프랜차이즈가 적어 수요가 번질 여지가 있다고 봅니다. 다만 수요가 실제로 번지는지는 이 데이터만으로 확정하지 못합니다.
-    <p class="note" style="margin:.6em 0 0">상권 면적이 작을수록 밀도가 크게 나오며, 경계는 서울시 상권 구분(면적 5,000㎡ 이상 1,502개) 기준입니다 [1][7].</p></div>
+    <p class="note" style="margin:.6em 0 0">상권 면적이 작을수록 밀도가 크게 나오며, 경계는 서울시 상권 구분(면적 5,000㎡ 이상 1,502개) 기준입니다 [1][4].</p></div>
 </div></section>
 
 <section id="define"><div class="wrap">
@@ -254,33 +254,15 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
       <tr><td>2 점포당 월 결제 건수 변화</td><td>결제 건수 ÷ 점포 수 ÷ 3</td><td>[1][2]</td><td>1,502 → 2,165 (+44%)</td><td><span class="chip ok">확인</span></td></tr>
       <tr><td>3 프랜차이즈 비중</td><td>프랜차이즈 ÷ 전체 점포</td><td>점포-상권 [1]</td><td>13% (서울 33.3%)</td><td><span class="chip ok">확인</span></td></tr>
       <tr><td>4 점포 증가율</td><td>2023Q2 대비 2026Q2</td><td>[1]</td><td>15 → 23 (+53%)</td><td><span class="chip ok">확인</span></td></tr>
-      <tr><td>5 인구 변화 (유동·직장·상주)</td><td>2023Q2 대비 2026Q2</td><td>길단위·직장·상주인구-상권 [6]</td><td>−17% / −17% / −28%</td><td><span class="chip warn">확인, 수요를 설명 못 함</span></td></tr>
+      <tr><td>5 인구 변화 (유동·직장·상주)</td><td>2023Q2 대비 2026Q2</td><td>길단위·직장·상주인구-상권 [3]</td><td>−17% / −17% / −28%</td><td><span class="chip warn">확인, 수요를 설명 못 함</span></td></tr>
       <tr><td>6 임대료·공실</td><td>임대료 증가율 vs 서울 평균</td><td>한국부동산원 임대동향</td><td>—</td><td><span class="chip bad">미확인</span></td></tr>
       <tr><td>7 교통·개발 트리거</td><td>확정된 개통·준공 일정</td><td>서울교통공사·국토부 공고</td><td>—</td><td><span class="chip bad">미확인</span></td></tr>
       <tr><td>8 검색량·SNS</td><td>"동네명 카페" 검색량 증가율</td><td>네이버 데이터랩 등</td><td>—</td><td><span class="chip bad">미확인</span></td></tr>
     </tbody>
   </table></div>
-  <p class="note" style="margin-top:10px">서울 전체: 3년간 유동인구 −3.3%, 직장인구 +13.4%, 상주인구 −3.1% [6]. 회현역 주변 인구는 줄었는데 결제 건수가 늘었다는 점이 이 제안의 가장 큰 의문점이기도 합니다.</p>
+  <p class="note" style="margin-top:10px">서울 전체: 3년간 유동인구 −3.3%, 직장인구 +13.4%, 상주인구 −3.1% [3]. 회현역 주변 인구는 줄었는데 결제 건수가 늘었다는 점이 이 제안의 가장 큰 의문점이기도 합니다.</p>
 </div></section>
 
-<section id="backtest"><div class="wrap">
-  <div class="eyebrow">03 · 백테스트</div>
-  <h2>과거 성수동에 적용해 봤습니다: 부분 통과</h2>
-  <p class="lead">성수동이 뜬 해를 2016년(성동구 점포 증가율이 서울 25개 자치구 중 1위 [4])으로 보고, 그 전 신규 인허가를 확인했습니다. 결제 건수 지표는 2019년 이후 자료만 있어 이 시기에 적용하지 못했습니다.</p>
-  <div class="table-wrap"><table>
-    <thead><tr><th>시점</th><th class="num">성수동 신규 인허가</th><th class="num">성수동 증감</th><th class="num">서울 증감</th><th>판정</th></tr></thead>
-    <tbody>
-      <tr><td>2013 (T-3)</td><td class="num">30건</td><td class="num">+43%</td><td class="num">+5%</td><td><span class="chip ok">잡았다</span></td></tr>
-      <tr><td>2014 (T-2)</td><td class="num">23건</td><td class="num">−23%</td><td class="num">+29%</td><td><span class="chip bad">못 잡았다</span></td></tr>
-      <tr><td>2015 (T-1)</td><td class="num">3건</td><td class="num">−87%</td><td class="num">+1%</td><td><span class="chip warn">이상치 의심</span></td></tr>
-    </tbody>
-  </table></div>
-  <ul class="tight note">
-    <li>교통 트리거는 잡았습니다. 서울숲역 이용객이 2013~2015년에 29.6% 늘었습니다 [5].</li>
-    <li>2014~2015년 인허가 하락은 성수가 뜨기 직전 흐름과 맞지 않습니다. 2015년 3건은 데이터 누락 가능성이 있으며 원인은 확인하지 못했습니다.</li>
-    <li>이번 제안의 핵심 지표(결제 건수)는 아직 과거 사례로 검증하지 못했다는 점이 가장 큰 한계입니다.</li>
-  </ul>
-</div></section>
 
 <section id="picks"><div class="wrap">
   <div class="eyebrow">04 · 추천 상권</div>
@@ -349,7 +331,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
   <h2>회현역 "프랜차이즈 사이의 독립 로스터리 바"</h2>
   <p class="lead">각 단계는 앞 단계의 데이터에서 나옵니다. 메뉴와 가격은 제안이며 [A] 가정입니다.</p>
 
-  <div class="callout" style="margin-top:0"><b>와우 포인트.</b> 회현역 주변 유동인구·직장인구·상주인구는 3년간 각각 −17%, −17%, −28% 줄었는데, 카페 결제 건수는 +121% 늘었습니다 [2][6]. 사람이 늘어서가 아니라, 카페가 늘고 그 카페로 손님이 몰린 것입니다. <span class="note">[I] 해석: 신규 점포로 모이는 목적형 방문, 관광 수요 회복, 또는 규모가 큰 점포 한두 곳의 효과일 수 있습니다. 추정매출에 외국인 카드 매출이 포함되는지는 확인하지 못했습니다.</span></div>
+  <div class="callout" style="margin-top:0"><b>와우 포인트.</b> 회현역 주변 유동인구·직장인구·상주인구는 3년간 각각 −17%, −17%, −28% 줄었는데, 카페 결제 건수는 +121% 늘었습니다 [2][3]. 사람이 늘어서가 아니라, 카페가 늘고 그 카페로 손님이 몰린 것입니다. <span class="note">[I] 해석: 신규 점포로 모이는 목적형 방문, 관광 수요 회복, 또는 규모가 큰 점포 한두 곳의 효과일 수 있습니다. 추정매출에 외국인 카드 매출이 포함되는지는 확인하지 못했습니다.</span></div>
 
   <div class="grid g2" style="margin-top:14px">
     <div class="card"><div class="eyebrow">타겟</div><h3>평일 20~40대 직장인</h3>
@@ -375,7 +357,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
   <div class="eyebrow">06 · 리스크</div>
   <h2>이 추천이 틀릴 수 있는 이유 하나</h2>
   <div class="callout risk" style="margin-top:12px">
-    <b>결제 건수 증가가 관광 수요 회복이나 신규 점포 한두 곳의 효과라면, 지속되지 않습니다.</b> 회현역 주변 인구는 줄었고(유동 −17%, 직장 −17%, 상주 −28% [6]), 점포는 23개뿐이라 한 점포의 변화가 수치를 크게 바꿉니다. 3년 전(2023Q2)은 관광이 회복되던 시기라 비교 시점이 유리했을 수 있습니다.
+    <b>결제 건수 증가가 관광 수요 회복이나 신규 점포 한두 곳의 효과라면, 지속되지 않습니다.</b> 회현역 주변 인구는 줄었고(유동 −17%, 직장 −17%, 상주 −28% [3]), 점포는 23개뿐이라 한 점포의 변화가 수치를 크게 바꿉니다. 3년 전(2023Q2)은 관광이 회복되던 시기라 비교 시점이 유리했을 수 있습니다.
     <p style="margin:.6em 0 0"><b>철회 조건 (우리 팀이 정한 기준 [A]):</b></p>
     <ul class="tight"><li>결제 건수 증가율(전년 동기 대비)이 2개 분기 연속 서울 평균 이하이면 철회합니다.</li><li>점포당 월 결제 건수가 2,000건 아래로 내려가면 철회합니다.</li><li>프랜차이즈 비중이 25%를 넘으면 "독립 점포 상권" 전제가 깨졌다고 보고 철회합니다.</li></ul>
     <p class="note">철회 시 2순위 창덕궁 골목으로 넘어갑니다.</p>
@@ -394,7 +376,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
       <tr><td>외국인 매출 포함 여부</td><td><span class="chip warn">미확인</span></td><td>추정매출에 관광객 카드 매출이 포함되면 결제 건수 증가가 관광 회복일 수 있습니다.</td></tr>
       <tr><td>표본 크기</td><td><span class="chip warn">작음</span></td><td>회현역 카페 23개, 창덕궁 20개, 신중부시장 13개로 한두 점포가 수치를 크게 바꿉니다.</td></tr>
       <tr><td>인구와 매출의 불일치</td><td><span class="chip warn">미해결</span></td><td>주변 인구는 줄었는데 결제 건수가 늘어난 이유를 확정하지 못했습니다.</td></tr>
-      <tr><td>백테스트</td><td><span class="chip warn">부분</span></td><td>핵심 지표(결제 건수)는 과거 사례로 검증하지 못했고, 성수동 인허가 지표만 부분 통과입니다.</td></tr>
+      <tr><td>과거 사례 검증</td><td><span class="chip warn">미실시</span></td><td>이 제안의 지표를 과거에 뜬 상권에 적용해 검증하지 않았습니다. 결제 건수 데이터가 2019년 이후부터만 있습니다.</td></tr>
       <tr><td>확산형</td><td><span class="chip warn">주의</span></td><td>세 곳 모두 명동·을지로·익선동에 인접해 "독립적으로 뜨는 곳"이 아니라 번져 나오는 곳입니다.</td></tr>
     </tbody>
   </table></div>
@@ -406,11 +388,8 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
   <ol>
     <li id="s1">서울시 상권분석서비스(점포-상권), 서울 열린데이터광장 OA-15577. 업종 "커피-음료", 2023Q2·2025Q2·2026Q2. https://data.seoul.go.kr/dataList/OA-15577/S/1/datasetView.do</li>
     <li id="s2">서울시 상권분석서비스(추정매출-상권), OA-15572. 업종 "커피-음료", 2023Q2·2025Q2·2026Q1·2026Q2. 점포당 월매출 = 분기 매출÷3÷점포 수, 평균 결제 금액 = 매출÷결제 건수. https://data.seoul.go.kr/dataList/OA-15572/S/1/datasetView.do</li>
-    <li id="s3">서울시 휴게음식점 인허가 정보, OA-16095. 2013~2017년 성수동 연도별 신규 인허가(커피숍·기타 휴게음식점·다방·과자점). https://data.seoul.go.kr/dataList/OA-16095/S/1/datasetView.do</li>
-    <li id="s4">시대, "급성장 성수동 상권, 신규 창업 '빨간불'", 2017.04.18. 성동구 점포 증가율 21.7%(2016년 4분기). https://www.sidae.com/article/2017041808368070128</li>
-    <li id="s5">서울신문, "서울숲길 젠트리피케이션 이태원 수준", 2016.10.18. 서울숲역 이용객 +29.6%(2013~2015). https://m.go.seoul.co.kr/news/2016/10/18/20161018016016</li>
-    <li id="s6">서울시 상권분석서비스(길단위인구-상권 OA-15568, 직장인구-상권 OA-15569, 상주인구-상권 OA-15584), 2023Q2 대비 2026Q2 변화.</li>
-    <li id="s7">서울시 상권분석서비스(영역-상권), OA-15560. 상권 좌표와 면적(㎡). 면적당 점포 수 = 점포 수(2026Q2) ÷ 상권 면적. 반경은 상권 중심 좌표 간 직선거리. https://data.seoul.go.kr/dataList/OA-15560/S/1/datasetView.do</li>
+    <li id="s3">서울시 상권분석서비스(길단위인구-상권 OA-15568, 직장인구-상권 OA-15569, 상주인구-상권 OA-15584), 2023Q2 대비 2026Q2 변화.</li>
+    <li id="s4">서울시 상권분석서비스(영역-상권), OA-15560. 상권 좌표와 면적(㎡). 면적당 점포 수 = 점포 수(2026Q2) ÷ 상권 면적. 반경은 상권 중심 좌표 간 직선거리. https://data.seoul.go.kr/dataList/OA-15560/S/1/datasetView.do</li>
   </ol>
   <p>기준 시점: 점포·매출·인구 2026년 2분기, 인허가 2026.10.15까지. 6조 · kearney-hotspot-6.</p>
 </div></footer>
