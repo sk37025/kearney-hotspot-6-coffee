@@ -41,7 +41,7 @@ nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.82re
 nav a:hover{background:var(--chip);color:var(--ink)}
 
 /* hero */
-.hero{padding:40px 0 36px}
+.hero{padding:8px 0 0}
 .hero-grid{display:grid;gap:24px;grid-template-columns:1fr}
 @media(min-width:760px){.hero-grid{grid-template-columns:1.15fr .85fr;align-items:center}}
 .hero h1{font-size:clamp(2rem,6.4vw,3.4rem);margin:10px 0 12px}
@@ -156,7 +156,10 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
   <button role="tab" id="tab-risk" aria-controls="risk" aria-selected="false" tabindex="-1" data-tab="risk">리스크</button>
 </div></nav>
 
-<header class="hero"><div class="wrap hero-grid">
+
+<main>
+<section id="place" class="panel" role="tabpanel" aria-labelledby="tab-place"><div class="wrap">
+<div class="hero hero-grid">
   <div>
     <div class="eyebrow">6조 · 스페셜티 카페 · 서울 상권 제안 (잠정)</div>
     <h1>명동 옆 <em>회현역</em>,<br>수요가 먼저 늘고 있습니다</h1>
@@ -185,10 +188,9 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
     </svg>
     <figcaption>모션 그래픽 임시 버전(웹 애니메이션). 영상 파일은 제작 예정입니다.</figcaption>
   </figure>
-</div></header>
+</div>
+<div style="height:30px"></div>
 
-<main>
-<section id="place" class="panel" role="tabpanel" aria-labelledby="tab-place"><div class="wrap">
   <div class="eyebrow">30초 요약</div>
   <h2>서울 카페 수요는 제자리인데, 이 상권은 두 배가 됐습니다</h2>
   <div class="grid g3" style="margin-top:14px">
