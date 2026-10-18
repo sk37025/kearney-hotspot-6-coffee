@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>을지로 다음은 방산시장 | 서울 핫플레이스 제안</title>
+<meta name="description" content="카페 점포가 줄어드는 서울에서 독립 카페가 늘고 있는 상권을 서울시 공공데이터로 찾았습니다. 3년 안에 뜰 상권 3곳과 1순위 매장 컨셉 제안.">
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --ink:#1c1b19; --muted:#6b675f; --line:#e4e0d6;
+  --accent:#c2410c; --accent-soft:#fdeadd; --ok:#15803d; --warn:#b45309; --bad:#b91c1c;
+  --chip:#efece3; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --surface:#1d1c19; --ink:#f2efe8; --muted:#a29d92; --line:#33312b;
+    --accent:#fb923c; --accent-soft:#3a2415; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171;
+    --chip:#2a2823; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --surface:#1d1c19; --ink:#f2efe8; --muted:#a29d92; --line:#33312b;
+  --accent:#fb923c; --accent-soft:#3a2415; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171;
+  --chip:#2a2823; --shadow:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+a{color:var(--accent)}
+h1,h2,h3{line-height:1.25;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(1.35rem,3.2vw,1.8rem);margin-bottom:6px}
+h3{font-size:1.05rem;margin-bottom:6px}
+p{margin:.4em 0}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+.lead{color:var(--muted);margin:0 0 20px}
+section{padding:44px 0;border-top:1px solid var(--line)}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;flex-wrap:wrap;gap:2px 4px;padding:6px 16px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.82rem;padding:5px 9px;border-radius:999px}
+nav a:hover{background:var(--chip);color:var(--ink)}
+
+/* hero */
+.hero{padding:40px 0 36px}
+.hero-grid{display:grid;gap:24px;grid-template-columns:1fr}
+@media(min-width:760px){.hero-grid{grid-template-columns:1.15fr .85fr;align-items:center}}
+.hero h1{font-size:clamp(2rem,6.4vw,3.4rem);margin:10px 0 12px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.sub{font-size:1.05rem;color:var(--muted);max-width:34em}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:clamp(1.3rem,4.4vw,1.9rem);letter-spacing:-.03em;color:var(--accent);font-variant-numeric:tabular-nums}
+.stat span{display:block;font-size:.76rem;color:var(--muted);line-height:1.4;margin-top:2px}
+.stat small{display:block;font-size:.7rem;color:var(--muted);margin-top:6px}
+.motion{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:var(--shadow)}
+.motion svg{width:100%;height:auto;display:block}
+.motion figcaption{font-size:.72rem;color:var(--muted);padding:6px 6px 2px}
+.ring{fill:none;stroke:var(--accent);stroke-width:1.5;opacity:0;transform-origin:center;transform-box:fill-box;animation:ripple 3.6s ease-out infinite}
+.ring.r2{animation-delay:1.2s}.ring.r3{animation-delay:2.4s}
+@keyframes ripple{0%{transform:scale(.2);opacity:.9}100%{transform:scale(1);opacity:0}}
+.travel{stroke:var(--accent);stroke-width:2;fill:none;stroke-dasharray:6 7;animation:dash 1.6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-26}}
+.pin{animation:bob 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center bottom}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.ring,.travel,.pin{animation:none}.ring{opacity:.35;transform:scale(.7)}}
+
+/* cards / tables */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:12px}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+.def{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 14px 14px 0;padding:16px 18px;font-size:1.05rem}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.88rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.76rem;text-transform:none;color:var(--muted);font-weight:700;background:var(--chip)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--chip);color:var(--muted);white-space:nowrap}
+.chip.ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.chip.warn{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.chip.bad{background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
+.tag{font-size:.7rem;font-weight:800;border-radius:4px;padding:1px 5px;margin-right:4px;background:var(--chip);color:var(--muted)}
+.bars{display:grid;gap:8px;margin-top:10px}
+.bar{display:grid;grid-template-columns:110px 1fr 52px;gap:8px;align-items:center;font-size:.82rem}
+@media(min-width:560px){.bar{grid-template-columns:160px 1fr 56px}}
+.bar .track{height:14px;background:var(--chip);border-radius:7px;position:relative;overflow:hidden}
+.bar .fill{height:100%;background:var(--accent);border-radius:7px;width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.bar .fill.neg{background:var(--muted)}
+.bar.top .fill{background:var(--accent)} .bar:not(.top) .fill{background:color-mix(in srgb,var(--accent) 45%,var(--muted))}
+.bar b{text-align:right;font-variant-numeric:tabular-nums}
+.rank{font-size:.78rem;font-weight:800;color:var(--accent)}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:10px;font-size:.84rem}
+.mini div span{display:block;color:var(--muted);font-size:.72rem}
+.mini div b{font-variant-numeric:tabular-nums}
+ul.tight{margin:.4em 0 0;padding-left:1.1em} ul.tight li{margin:.25em 0}
+.note{font-size:.8rem;color:var(--muted)}
+.callout{border:1px dashed var(--line);border-radius:12px;padding:12px 14px;margin-top:14px;font-size:.88rem;background:var(--surface)}
+.callout.risk{border-color:var(--bad);border-style:solid}
+.names{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.names span{background:var(--accent-soft);color:var(--accent);font-weight:700;border-radius:10px;padding:6px 12px}
+footer{padding:36px 0 60px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
+.theme{position:fixed;right:12px;bottom:12px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:.78rem;color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+</style>
+</head>
+<body>
+<nav aria-label="목차"><div class="wrap">
+  <a href="#summary">요약</a><a href="#define">정의</a><a href="#metrics">지표</a><a href="#backtest">백테스트</a>
+  <a href="#picks">추천 3곳</a><a href="#concept">1순위 컨셉</a><a href="#risk">리스크</a><a href="#limits">한계</a><a href="#sources">출처</a>
+</div></nav>
+
+<header class="hero"><div class="wrap hero-grid">
+  <div>
+    <div class="eyebrow">6조 · 스페셜티 카페 · 서울 상권 제안</div>
+    <h1>을지로 다음은<br><em>방산시장</em>입니다</h1>
+    <p class="sub">점포당 매출이 아직 낮은 채로 독립 카페가 먼저 늘고 있는 골목. 카페 점포가 줄어드는 서울에서, 공공데이터로 거꾸로 늘고 있는 상권을 찾았습니다.</p>
+    <div class="stats" aria-label="핵심 수치">
+      <div class="stat"><b data-count="56" data-prefix="+" data-suffix="%">+56%</b><span>방산시장 카페 점포 증가 (3년)</span><small>서울 평균 −5.6% [1]</small></div>
+      <div class="stat"><b data-count="12" data-suffix="%">12%</b><span>프랜차이즈 비중</span><small>서울 평균 33.3% [1]</small></div>
+      <div class="stat"><b data-count="10931" data-suffix="원">10,931원</b><span>평균 결제 금액</span><small>서울 평균 7,902원 [2]</small></div>
+    </div>
+  </div>
+  <figure class="motion" aria-label="을지로에서 방산시장으로 번지는 상권을 보여주는 애니메이션">
+    <svg viewBox="0 0 360 300" role="img">
+      <rect width="360" height="300" rx="14" fill="none"/>
+      <g stroke="var(--line)" stroke-width="1">
+        <path d="M0 210 C 90 190, 150 230, 360 200" fill="none" stroke-width="10" opacity=".6"/>
+        <path d="M60 0 L 120 300" fill="none"/><path d="M200 0 L 230 300" fill="none"/><path d="M0 100 L 360 130" fill="none"/>
+      </g>
+      <circle class="ring" cx="110" cy="150" r="70"/><circle class="ring r2" cx="110" cy="150" r="70"/><circle class="ring r3" cx="110" cy="150" r="70"/>
+      <circle cx="110" cy="150" r="9" fill="var(--muted)"/>
+      <text x="110" y="182" text-anchor="middle" font-size="12" fill="var(--muted)">을지로 (이미 뜸)</text>
+      <path class="travel" d="M122 148 C 170 130, 210 120, 252 112"/>
+      <g class="pin"><circle cx="262" cy="108" r="12" fill="var(--accent)"/><circle cx="262" cy="108" r="4" fill="var(--surface)"/></g>
+      <text x="262" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">방산시장</text>
+      <text x="262" y="156" text-anchor="middle" font-size="11" fill="var(--muted)">점포 16 → 25</text>
+    </svg>
+    <figcaption>모션 그래픽 임시 버전(웹 애니메이션). 영상 파일은 제작 예정입니다.</figcaption>
+  </figure>
+</div></header>
+
+<main>
+<section id="summary"><div class="wrap">
+  <div class="eyebrow">30초 요약</div>
+  <h2>서울 카페는 줄고 있는데, 이 골목은 늘고 있습니다</h2>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card"><h3>1. 시장은 포화입니다</h3><p>서울 커피·음료 점포는 3년간 17,652개에서 16,672개로 5.6% 줄었습니다 [1]. 늘어나는 상권 자체가 드뭅니다.</p></div>
+    <div class="card"><h3>2. 그런데 방산시장은 다릅니다</h3><p>같은 기간 점포 16개에서 25개로 늘었고, 프랜차이즈는 3개뿐입니다. 점포당 매출은 을지로3가역의 약 6분의 1입니다 [1][2].</p></div>
+    <div class="card"><h3>3. 컨셉은 "오후에 머무는 로스터리"</h3><p>을지로입구·2가·3가는 점심(11~14시) 매출이 42~51%인데, 방산시장은 오후 2~5시가 31%입니다 [2]. 점심 커피가 아닌 머무는 커피 자리가 비어 있을 수 있습니다.</p></div>
+  </div>
+  <p class="note" style="margin-top:12px">이 제안은 지표 5개 중 3개(점포 증가, 프랜차이즈 비중, 매출)를 공공데이터로 확인한 잠정 결과입니다. 임대료·개통 일정·검색량은 확인하지 못했습니다. 자세한 내용은 <a href="#limits">한계</a>에 적었습니다.</p>
+</div></section>
+
+<section id="define"><div class="wrap">
+  <div class="eyebrow">01 · 정의</div>
+  <h2>"뜬다"를 이렇게 정의했습니다</h2>
+  <p class="lead">이미 뜬 곳이 아니라 아직 안 뜬 곳을 걸러내는 문장입니다.</p>
+  <div class="def"><span class="tag">A 가정</span>지금은 점포당 매출과 임대료가 서울 평균 이하지만, 신규 카페 개업이 서울 평균보다 빠르게 늘고 프랜차이즈 비중이 낮으며 교통·개발 트리거가 확정되어, <b>3년 안에 점포당 매출이 서울 평균을 넘어설 것으로 예상되는 상권</b></div>
+  <div class="grid g3" style="margin-top:12px">
+    <div class="card"><h3>현재</h3><p>아직 안 뜸. 점포당 매출·임대료가 서울 평균 이하</p></div>
+    <div class="card"><h3>지금의 신호</h3><p>카페 점포 증가, 낮은 프랜차이즈 비중, 확정된 트리거</p></div>
+    <div class="card"><h3>3년 뒤 결과</h3><p>점포당 매출이 서울 평균을 넘어섬 (검증용)</p></div>
+  </div>
+</div></section>
+
+<section id="metrics"><div class="wrap">
+  <div class="eyebrow">02 · 지표</div>
+  <h2>지표 5개 + 검증 1개, 그리고 확인 상태</h2>
+  <p class="lead">선행 지표가 과반입니다. 확인하지 못한 지표는 확인하지 못했다고 표시했습니다.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>지표</th><th>측정 방법</th><th>출처</th><th>구분</th><th>상태</th></tr></thead>
+    <tbody>
+      <tr><td>1 신규 카페 개업 가속도</td><td>최근 12개월 신규 인허가 ÷ 직전 12개월</td><td>휴게음식점 인허가 [3]</td><td>선행</td><td><span class="chip warn">부분 사용</span></td></tr>
+      <tr><td>2 독립 점포 비중</td><td>1 − 프랜차이즈 ÷ 전체 점포</td><td>점포-상권 [1]</td><td>선행</td><td><span class="chip ok">확인</span></td></tr>
+      <tr><td>3 임대료·공실 변곡</td><td>임대료 증가율 vs 서울 평균</td><td>한국부동산원 임대동향</td><td>선행</td><td><span class="chip bad">미확인</span></td></tr>
+      <tr><td>4 교통·개발 트리거</td><td>확정된 개통·준공 일정</td><td>서울교통공사·국토부 공고</td><td>선행</td><td><span class="chip bad">미확인</span></td></tr>
+      <tr><td>5 SNS 관심 증가</td><td>"동네명 카페" 검색량 증가율</td><td>네이버 데이터랩 등</td><td>선행(약)</td><td><span class="chip bad">미확인</span></td></tr>
+      <tr><td>검증 점포당 매출</td><td>점포당 월매출 vs 서울 평균, 3년 변화</td><td>추정매출-상권 [2]</td><td>후행</td><td><span class="chip ok">확인</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note" style="margin-top:10px">지표 1은 인허가 업태 분류가 일정하지 않아 후보 선별에는 쓰지 않았고, 점포-상권의 커피·음료 집계로 대신했습니다.</p>
+</div></section>
+
+<section id="backtest"><div class="wrap">
+  <div class="eyebrow">03 · 백테스트</div>
+  <h2>과거의 성수동에 적용해 봤습니다: 부분 통과</h2>
+  <p class="lead">성수동이 뜬 해를 2016년(성동구 점포 증가율이 서울 25개 자치구 중 1위 [4])으로 보고, 그 전 지표를 확인했습니다.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>시점</th><th class="num">성수동 신규 인허가</th><th class="num">성수동 증감</th><th class="num">서울 증감</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>2013 (T-3)</td><td class="num">30건</td><td class="num">+43%</td><td class="num">+5%</td><td><span class="chip ok">잡았다</span></td></tr>
+      <tr><td>2014 (T-2)</td><td class="num">23건</td><td class="num">−23%</td><td class="num">+29%</td><td><span class="chip bad">못 잡았다</span></td></tr>
+      <tr><td>2015 (T-1)</td><td class="num">3건</td><td class="num">−87%</td><td class="num">+1%</td><td><span class="chip warn">이상치 의심</span></td></tr>
+    </tbody>
+  </table></div>
+  <ul class="tight note">
+    <li>교통 트리거는 잡았습니다. 서울숲역 이용객이 2013~2015년에 29.6% 늘었습니다 [5].</li>
+    <li>못 잡은 부분: 2014~2015년의 인허가 하락은 성수가 뜨기 직전 흐름과 맞지 않습니다. 2015년 3건은 데이터 누락 가능성이 있으며 원인은 확인하지 못했습니다.</li>
+    <li>그래서 인허가 하나만 보지 않고 점포 수, 프랜차이즈 비중, 매출을 함께 보는 규칙을 만들었습니다.</li>
+  </ul>
+</div></section>
+
+<section id="picks"><div class="wrap">
+  <div class="eyebrow">04 · 추천 상권</div>
+  <h2>조건을 통과한 171개 상권에서 3곳을 골랐습니다</h2>
+  <p class="lead">성수·연남·망원·홍대·을지로·익선동·서촌·한남·강남 등 이미 뜬 곳은 뺐습니다. 아래 5개 조건을 모두 충족하는지 봤습니다.</p>
+  <div class="card">
+    <ul class="tight">
+      <li><b>①</b> 3년간 카페 점포 증가 (서울 평균 −5.6%보다 좋을 것)</li>
+      <li><b>②</b> 프랜차이즈 비중 33.3%(서울 평균) 이하</li>
+      <li><b>③</b> 최근 1년 점포 증가율 +10% 이상 (증가가 멈추지 않았을 것)</li>
+      <li><b>④</b> 점포당 월매출이 서울 평균(약 1,560만 원) 이하 (아직 뜨기 전일 것)</li>
+      <li><b>⑤</b> 카드 추정매출이 3년 전보다 줄지 않았을 것 (점포만 늘고 수요는 없는 곳 제외)</li>
+    </ul>
+    <p class="note">데이터: 점포-상권 [1], 추정매출-상권 [2], 커피·음료 업종, 2023년 2분기와 2026년 2분기 비교.</p>
+  </div>
+
+  <h3 style="margin-top:22px">3년 점포 증가율 (서울 평균 −5.6%)</h3>
+  <div class="bars" id="bars">
+    <div class="bar top" data-v="56"><span>방산시장</span><div class="track"><div class="fill"></div></div><b>+56%</b></div>
+    <div class="bar top" data-v="50"><span>해방촌 남동측</span><div class="track"><div class="fill"></div></div><b>+50%</b></div>
+    <div class="bar top" data-v="18"><span>후암동주민센터</span><div class="track"><div class="fill"></div></div><b>+18%</b></div>
+    <div class="bar" data-v="26"><span>서강대역 1번</span><div class="track"><div class="fill"></div></div><b>+26%</b></div>
+    <div class="bar" data-v="29"><span>문래예술촌</span><div class="track"><div class="fill"></div></div><b>+29%</b></div>
+  </div>
+  <p class="note">서강대역 1번은 매출이 3년 전보다 7% 줄어 ⑤에서, 문래예술촌은 최근 1년 증가가 +2%에 그쳐 ③에서 제외했습니다 [1][2].</p>
+
+  <div class="grid g3" style="margin-top:16px">
+    <article class="card"><div class="rank">1순위</div><h3>방산종합시장</h3><p class="note">중구 · 을지로 확산형 후보</p>
+      <div class="mini">
+        <div><span>점포 (23Q2→26Q2)</span><b>16 → 25 (+56%)</b></div><div><span>최근 1년</span><b>+32%</b></div>
+        <div><span>프랜차이즈</span><b>12%</b></div><div><span>점포당 월매출</span><b>약 510만 원</b></div>
+        <div><span>매출 3년 변화</span><b>+8%</b></div><div><span>평균 결제</span><b>10,931원</b></div>
+      </div>
+      <p>5개 조건을 모두 충족했고, 최근 1년 증가율이 가장 높습니다.</p></article>
+    <article class="card"><div class="rank">2순위</div><h3>해방촌 남동측</h3><p class="note">용산구 · 이미 알려진 곳일 수 있음</p>
+      <div class="mini">
+        <div><span>점포</span><b>26 → 39 (+50%)</b></div><div><span>최근 1년</span><b>+15%</b></div>
+        <div><span>프랜차이즈</span><b>5%</b></div><div><span>점포당 월매출</span><b>약 390만 원</b></div>
+        <div><span>매출 3년 변화</span><b>+7%</b></div><div><span>평균 결제</span><b>13,897원</b></div>
+      </div>
+      <p>조건은 모두 충족하지만 주말 매출이 53%, 20~30대가 80%라 이미 방문형 핫플에 가깝습니다.</p></article>
+    <article class="card"><div class="rank">3순위</div><h3>후암동주민센터</h3><p class="note">용산구 · 독립형 후보</p>
+      <div class="mini">
+        <div><span>점포</span><b>33 → 39 (+18%)</b></div><div><span>최근 1년</span><b>+11%</b></div>
+        <div><span>프랜차이즈</span><b>13%</b></div><div><span>점포당 월매출</span><b>약 450만 원</b></div>
+        <div><span>매출 3년 변화</span><b>−8%</b></div><div><span>평균 결제</span><b>9,414원</b></div>
+      </div>
+      <p>⑤ 조건은 못 채웠지만, 신규 개성 카페가 늘고 있다는 보도가 있습니다 [6]. 수요 확인이 숙제입니다.</p></article>
+  </div>
+  <p class="note" style="margin-top:12px">1순위와 2순위 차이: 두 곳 모두 5개 조건을 충족했고, 최근 1년 점포 증가율(+32% 대 +15%)과 아직 방문형으로 굳지 않은 이용 패턴(주말 27% 대 53%)을 근거로 방산시장을 1순위로 했습니다. 1순위가 무너지면 2순위로 넘어갑니다.</p>
+</div></section>
+
+<section id="concept"><div class="wrap">
+  <div class="eyebrow">05 · 1순위 매장 컨셉</div>
+  <h2>방산시장 "오후의 로스터리 바"</h2>
+  <p class="lead">각 단계는 앞 단계의 데이터에서 나옵니다. 메뉴와 가격은 제안이며 [A] 가정입니다.</p>
+
+  <div class="callout" style="margin-top:0"><b>와우 포인트.</b> 을지로3가역 점포당 월매출은 약 2,950만 원인데 방산시장은 약 510만 원, 6분의 1입니다. 그런데 평균 결제 금액은 방산시장이 10,931원으로 을지로3가역 9,394원, 서울 평균 7,902원보다 높습니다 [2]. 손님은 적지만 한 번 올 때 더 씁니다. <span class="note">[I] 해석: 아직 수요가 점포를 다 채우지 못한 초기 단계이거나, 소규모 점포가 많은 구조일 수 있습니다.</span></div>
+
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><div class="eyebrow">타겟</div><h3>20~30대 오후 방문객</h3>
+      <p>20~30대가 매출의 54%입니다. 20대만 보면 23%로 서울 평균 17%보다 높습니다 [2].</p>
+      <p class="note">근거: 방산시장 연령대별 매출 비중, 2026Q2 [2]</p></div>
+    <div class="card"><div class="eyebrow">시간</div><h3>오후 2~5시 중심</h3>
+      <p>오후 2~5시 매출이 31%로 서울 평균 24%보다 높습니다. 을지로입구·2가·3가역은 점심(11~14시)이 42~51%로 시간대가 다릅니다 [2].</p>
+      <p class="note">근거: 시간대별 매출 비중, 2026Q2 [2]</p></div>
+    <div class="card"><div class="eyebrow">메뉴 (제안)</div><h3>대표 메뉴 3개와 가격대</h3>
+      <ul class="tight"><li>싱글 오리진 필터 커피 7,000원</li><li>시그니처 라떼 6,500원</li><li>디저트 포함 세트 11,000원</li></ul>
+      <p class="note">근거: 상권 평균 결제 10,931원에 맞춰 세트 단가를 설정, 서울 평균 7,902원보다 높은 지불 의사 [2]. 실제 메뉴 가격표는 조사하지 못했습니다.</p></div>
+    <div class="card"><div class="eyebrow">차별성</div><h3>점심이 아닌 머무는 커피</h3>
+      <p>프랜차이즈가 25개 점포 중 3개뿐이라 경쟁은 대부분 독립 점포입니다 [1]. 점심 장사 중심인 인근 상권과 시간대가 겹치지 않습니다.</p></div>
+  </div>
+  <div class="card" style="margin-top:12px"><div class="eyebrow">왜 이 상권이어야 하는가</div>
+    <p>을지로에서 번진 흐름 위에 있으면서(확산형), 점포당 매출이 낮아 진입 비용 부담이 상대적으로 적을 가능성이 있습니다 [A]. 같은 컨셉을 해방촌에 옮기면 주말 방문형 상권이라 오후 평일 수요 논리가 맞지 않습니다. 컨셉은 방산시장의 시간대 패턴에 묶여 있습니다.</p>
+    <p><b>컨셉 한 문장:</b> 인쇄·종이 골목에서 오후 한 잔을 천천히 마시는 로스터리 바.</p>
+    <div class="names"><span>종이와 원두</span><span>오후 방산</span><span>인쇄소 옆 로스터리</span></div>
+    <p class="note" style="margin-top:8px">매장명 후보 3개. 상표 등록 여부는 확인하지 않았습니다.</p></div>
+</div></section>
+
+<section id="risk"><div class="wrap">
+  <div class="eyebrow">06 · 리스크</div>
+  <h2>이 추천이 틀릴 수 있는 이유 하나</h2>
+  <div class="callout risk" style="margin-top:12px">
+    <b>점포만 늘고 수요가 따라오지 않으면 과밀 경쟁이 됩니다.</b> 방산시장은 점포가 3년간 56% 늘었는데 매출은 8% 늘었습니다 [1][2]. 점포가 매출보다 빨리 늘고 있습니다.
+    <p style="margin:.6em 0 0"><b>철회 조건 (우리 팀이 정한 기준 [A]):</b></p>
+    <ul class="tight"><li>점포 증가율이 매출 증가율을 2개 분기 연속 웃돌면 철회합니다.</li><li>점포당 월매출이 현재 약 510만 원 아래로 내려가면 철회합니다.</li><li>프랜차이즈 비중이 25%를 넘으면 "독립 카페 상권" 전제가 깨졌다고 보고 철회합니다.</li></ul>
+    <p class="note">철회 시 2순위 해방촌 남동측으로 넘어가되, 이미 알려진 곳이라는 점을 다시 검토합니다.</p>
+  </div>
+</div></section>
+
+<section id="limits"><div class="wrap">
+  <div class="eyebrow">07 · 한계</div>
+  <h2>확인하지 못한 것</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>항목</th><th>상태</th><th>이 결과에 미치는 영향</th></tr></thead>
+    <tbody>
+      <tr><td>임대료·공실 (지표 3)</td><td><span class="chip bad">미확인</span></td><td>"임대료보다 먼저"라는 핵심 가설을 직접 확인하지 못했습니다. 점포당 매출이 낮다는 간접 근거만 있습니다.</td></tr>
+      <tr><td>교통·개발 트리거 (지표 4)</td><td><span class="chip bad">미확인</span></td><td>방산시장의 개통·개발 일정을 확인하지 못했습니다.</td></tr>
+      <tr><td>검색량·SNS (지표 5)</td><td><span class="chip bad">미확인</span></td><td>네이버 데이터랩에 접근하지 못했습니다. 유튜브·인스타 언급은 후보 동네별로 수집하지 못했습니다.</td></tr>
+      <tr><td>표본 크기</td><td><span class="chip warn">작음</span></td><td>상권당 카페 점포가 25~40개라 1~2개 점포 변화도 증가율을 크게 바꿉니다.</td></tr>
+      <tr><td>상권 경계</td><td><span class="chip warn">주의</span></td><td>서울시 상권 단위로 집계했습니다. 방산시장 상권은 을지로4~5가와 인접해 "을지로 확산"과 완전히 구분되지 않습니다.</td></tr>
+      <tr><td>백테스트</td><td><span class="chip warn">부분</span></td><td>성수동 1곳만, 2014~2015년은 인허가 지표가 맞지 않았습니다.</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+</main>
+
+<footer id="sources"><div class="wrap">
+  <h2 style="font-size:1.1rem;color:var(--ink)">출처</h2>
+  <ol>
+    <li id="s1">서울시 상권분석서비스(점포-상권), 서울 열린데이터광장 OA-15577. 업종 "커피-음료", 2023Q2·2025Q2·2026Q2. https://data.seoul.go.kr/dataList/OA-15577/S/1/datasetView.do</li>
+    <li id="s2">서울시 상권분석서비스(추정매출-상권), 서울 열린데이터광장 OA-15572. 업종 "커피-음료", 2023Q2·2026Q2. 점포당 월매출은 분기 매출÷3÷점포 수, 평균 결제 금액은 매출÷결제 건수로 계산. https://data.seoul.go.kr/dataList/OA-15572/S/1/datasetView.do</li>
+    <li id="s3">서울시 휴게음식점 인허가 정보, 서울 열린데이터광장 OA-16095. 2013~2017년 성수동 연도별 신규 인허가(커피숍·기타 휴게음식점·다방·과자점). https://data.seoul.go.kr/dataList/OA-16095/S/1/datasetView.do</li>
+    <li id="s4">시대, "급성장 성수동 상권, 신규 창업 '빨간불'", 2017.04.18. 성동구 점포 증가율 21.7%(2016년 4분기). https://www.sidae.com/article/2017041808368070128</li>
+    <li id="s5">서울신문, "서울숲길 젠트리피케이션 이태원 수준", 2016.10.18. 서울숲역 이용객 +29.6%(2013~2015). https://m.go.seoul.co.kr/news/2016/10/18/20161018016016</li>
+    <li id="s6">에스콰이어 코리아, 후암동 신규 카페 소개 기사, 2025.11. https://www.esquirekorea.co.kr/article/1891290 (본문 수치 없음, 검색 결과로만 확인)</li>
+    <li id="s7">한경MONEY(핀다 오픈업 집계), 문래역 상권 분석, 2026. 문래창작촌 상권 2025년 매출 전년 대비 약 11.7% 감소. https://landvalueup.hankyung.com/issuecheck-2026-0825-0700/</li>
+  </ol>
+  <p>기준 시점: 점포·매출 2026년 2분기, 인허가 2026.10.15까지. 6조 · kearney-hotspot-6.</p>
+</div></footer>
+
+<button class="theme" id="themeBtn" aria-label="테마 전환">테마</button>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fmt(n){return n.toLocaleString('ko-KR');}
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var end=+el.dataset.count, pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
+    if(reduce){el.textContent=pre+fmt(end)+suf;return;}
+    var t0=null, dur=1100;
+    function step(t){ if(!t0)t0=t; var p=Math.min((t-t0)/dur,1); var e=1-Math.pow(1-p,3);
+      el.textContent=pre+fmt(Math.round(end*e))+suf; if(p<1)requestAnimationFrame(step);}
+    el.textContent=pre+'0'+suf; requestAnimationFrame(step);
+  });
+  var bars=document.getElementById('bars');
+  function fill(){ bars.querySelectorAll('.bar').forEach(function(b){ b.querySelector('.fill').style.width=(+b.dataset.v/60*100)+'%'; }); }
+  if(bars){ if('IntersectionObserver' in window && !reduce){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fill();io.disconnect();}});},{threshold:.3}); io.observe(bars);
+    } else { fill(); } setTimeout(fill,3000); }
+  var btn=document.getElementById('themeBtn'), root=document.documentElement;
+  function cur(){ var t=root.getAttribute('data-theme'); if(t) return t; return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'; }
+  btn.addEventListener('click',function(){ root.setAttribute('data-theme', cur()==='dark'?'light':'dark'); });
+})();
+</script>
+</body>
+</html>
