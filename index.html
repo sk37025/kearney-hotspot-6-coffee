@@ -89,6 +89,21 @@ nav a:hover{background:var(--chip);color:var(--ink)}
 .cmp table{min-width:0;font-size:.86rem}
 @media (prefers-reduced-motion:reduce){#seoulPts circle,#nearG,#ringG,#lblG{transition:none}}
 
+
+/* tabs */
+nav.tabs{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;flex-wrap:wrap;gap:2px 4px;padding:6px 16px}
+nav.tabs button{font:inherit;font-size:.85rem;white-space:nowrap;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;border-radius:8px 8px 0 0;padding:8px 12px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);background:var(--chip)}
+nav.tabs button[aria-selected="true"]{color:var(--accent);font-weight:800;border-bottom-color:var(--accent)}
+nav.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.panel[hidden]{display:none}
+.panel{border-top:0;padding-top:28px}
+.pager{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:16px;border-top:1px solid var(--line)}
+.pager button{font:inherit;font-size:.88rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
+.pager button:hover{border-color:var(--accent);color:var(--accent)}
+.pager .sp{flex:1}
+
 /* cards / tables */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
 .grid{display:grid;gap:12px}
@@ -132,9 +147,15 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
 </style>
 </head>
 <body>
-<nav aria-label="목차"><div class="wrap">
-  <a href="#summary">요약</a><a href="#map">위치</a><a href="#define">정의</a><a href="#metrics">지표</a>
-  <a href="#picks">추천 3곳</a><a href="#concept">1순위 컨셉</a><a href="#risk">리스크</a><a href="#limits">한계</a><a href="#sources">출처</a>
+<nav class="tabs" aria-label="내용 탭"><div class="wrap" role="tablist">
+  <button role="tab" id="tab-summary" aria-controls="summary" aria-selected="true" tabindex="0" data-tab="summary">요약</button>
+  <button role="tab" id="tab-map" aria-controls="map" aria-selected="false" tabindex="-1" data-tab="map">위치</button>
+  <button role="tab" id="tab-define" aria-controls="define" aria-selected="false" tabindex="-1" data-tab="define">정의</button>
+  <button role="tab" id="tab-metrics" aria-controls="metrics" aria-selected="false" tabindex="-1" data-tab="metrics">지표</button>
+  <button role="tab" id="tab-picks" aria-controls="picks" aria-selected="false" tabindex="-1" data-tab="picks">추천 3곳</button>
+  <button role="tab" id="tab-concept" aria-controls="concept" aria-selected="false" tabindex="-1" data-tab="concept">1순위 컨셉</button>
+  <button role="tab" id="tab-risk" aria-controls="risk" aria-selected="false" tabindex="-1" data-tab="risk">리스크</button>
+  <button role="tab" id="tab-limits" aria-controls="limits" aria-selected="false" tabindex="-1" data-tab="limits">한계</button>
 </div></nav>
 
 <header class="hero"><div class="wrap hero-grid">
@@ -169,7 +190,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
 </div></header>
 
 <main>
-<section id="summary"><div class="wrap">
+<section id="summary" class="panel" role="tabpanel" aria-labelledby="tab-summary"><div class="wrap">
   <div class="eyebrow">30초 요약</div>
   <h2>서울 카페 수요는 제자리인데, 이 상권은 두 배가 됐습니다</h2>
   <div class="grid g3" style="margin-top:14px">
@@ -180,7 +201,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
   <p class="note" style="margin-top:12px">처음에는 방산시장을 1순위로 봤지만, 점포는 56% 늘었는데 점포당 결제 건수가 32% 줄어 수요 증빙에서 탈락했습니다. <a href="#picks">탈락 사유</a>를 아래에 적었습니다. 이 제안은 잠정 결과이고, 임대료·개발 일정·검색량은 확인하지 못했습니다 (<a href="#limits">한계</a>).</p>
 </div></section>
 
-<section id="map"><div class="wrap">
+<section id="map" class="panel" role="tabpanel" aria-labelledby="tab-map" hidden><div class="wrap">
   <div class="eyebrow">위치 · 포화도</div>
   <h2>서울 어디이고, 주변은 얼마나 빽빽한가</h2>
   <p class="lead">서울 1,500여 개 상권을 점으로 찍고, 회현역 반경 1.5km를 확대했습니다. 색은 면적당 카페 점포 수(밀도)입니다.</p>
@@ -231,7 +252,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
     <p class="note" style="margin:.6em 0 0">상권 면적이 작을수록 밀도가 크게 나오며, 경계는 서울시 상권 구분(면적 5,000㎡ 이상 1,502개) 기준입니다 [1][4].</p></div>
 </div></section>
 
-<section id="define"><div class="wrap">
+<section id="define" class="panel" role="tabpanel" aria-labelledby="tab-define" hidden><div class="wrap">
   <div class="eyebrow">01 · 정의</div>
   <h2>"뜬다"를 이렇게 다시 정의했습니다</h2>
   <p class="lead">처음에는 "점포당 매출이 낮은 곳"을 아직 안 뜬 곳으로 봤습니다. 낮은 매출은 수요 부족과 구분되지 않아서, 수요가 실제로 늘고 있는지를 중심으로 바꿨습니다.</p>
@@ -243,7 +264,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
   </div>
 </div></section>
 
-<section id="metrics"><div class="wrap">
+<section id="metrics" class="panel" role="tabpanel" aria-labelledby="tab-metrics" hidden><div class="wrap">
   <div class="eyebrow">02 · 지표</div>
   <h2>지표 8개와 확인 상태</h2>
   <p class="lead">확인하지 못한 지표는 확인하지 못했다고 표시했습니다.</p>
@@ -264,7 +285,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
 </div></section>
 
 
-<section id="picks"><div class="wrap">
+<section id="picks" class="panel" role="tabpanel" aria-labelledby="tab-picks" hidden><div class="wrap">
   <div class="eyebrow">04 · 추천 상권</div>
   <h2>수요가 늘고 있는 3곳을 골랐습니다</h2>
   <p class="lead">성수·연남·망원·홍대·을지로·익선동·서촌·한남·강남 등 이미 뜬 곳과 점포 12개 미만 상권은 뺐습니다. 조건을 통과한 상권 중 3곳입니다.</p>
@@ -326,7 +347,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
   <p class="note" style="margin-top:12px">1순위와 2순위의 차이: 두 곳 모두 조건을 통과했고, 회현역은 점포 수(23개)와 결제 건수 증가폭(+121%)이 더 커서 1순위로 했습니다. 다만 회현역은 점포당 월매출이 서울 평균보다 높아 "아직 안 뜸"에서 가장 먼 후보입니다. 회현역이 무너지면 2순위로 넘어갑니다.</p>
 </div></section>
 
-<section id="concept"><div class="wrap">
+<section id="concept" class="panel" role="tabpanel" aria-labelledby="tab-concept" hidden><div class="wrap">
   <div class="eyebrow">05 · 1순위 매장 컨셉</div>
   <h2>회현역 "프랜차이즈 사이의 독립 로스터리 바"</h2>
   <p class="lead">각 단계는 앞 단계의 데이터에서 나옵니다. 메뉴와 가격은 제안이며 [A] 가정입니다.</p>
@@ -353,7 +374,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
     <p class="note" style="margin-top:8px">매장명 후보 3개. 상표 등록 여부는 확인하지 않았습니다.</p></div>
 </div></section>
 
-<section id="risk"><div class="wrap">
+<section id="risk" class="panel" role="tabpanel" aria-labelledby="tab-risk" hidden><div class="wrap">
   <div class="eyebrow">06 · 리스크</div>
   <h2>이 추천이 틀릴 수 있는 이유 하나</h2>
   <div class="callout risk" style="margin-top:12px">
@@ -364,7 +385,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
   </div>
 </div></section>
 
-<section id="limits"><div class="wrap">
+<section id="limits" class="panel" role="tabpanel" aria-labelledby="tab-limits" hidden><div class="wrap">
   <div class="eyebrow">07 · 한계</div>
   <h2>확인하지 못한 것</h2>
   <div class="table-wrap"><table>
@@ -413,7 +434,7 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
     if('IntersectionObserver' in window && !reduce){
       var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fill();io.disconnect();}});},{threshold:.3}); io.observe(el);
     } else { fill(); }
-    setTimeout(fill,3000);
+    document.addEventListener('tabshown',function(e){ if(el.closest('#'+e.detail)) setTimeout(fill,60); });
   }
   document.querySelectorAll('.bars').forEach(setup);
 
@@ -473,7 +494,45 @@ footer ol{padding-left:1.2em} footer li{margin:.3em 0;word-break:break-all}
     var started=false, fig=document.getElementById('mapfig');
     function start(){ if(started)return; started=true; play(); }
     if('IntersectionObserver' in window){ new IntersectionObserver(function(es,io){es.forEach(function(e){if(e.isIntersecting){start();io.disconnect();}});},{threshold:.35}).observe(fig); } else { start(); }
-    setTimeout(start,6000);
+    document.addEventListener('tabshown',function(e){ if(e.detail==='map') start(); });
+  })();
+
+
+  /* 탭 전환 */
+  (function(){
+    var tabs=[].slice.call(document.querySelectorAll('nav.tabs [role="tab"]'));
+    var ids=tabs.map(function(t){return t.dataset.tab;});
+    var bar=document.querySelector('nav.tabs');
+    function show(id,opts){
+      if(ids.indexOf(id)<0) id=ids[0];
+      tabs.forEach(function(t){var on=t.dataset.tab===id; t.setAttribute('aria-selected',String(on)); t.tabIndex=on?0:-1;});
+      ids.forEach(function(i){var p=document.getElementById(i); if(p) p.hidden=(i!==id);});
+      if(!opts||opts.push!==false){ try{history.replaceState(null,'','#'+id);}catch(e){} }
+      if(!opts||opts.scroll!==false){ var y=bar.getBoundingClientRect().top+window.scrollY; window.scrollTo({top:y,behavior:reduce?'auto':'smooth'}); }
+      setTimeout(function(){document.dispatchEvent(new CustomEvent('tabshown',{detail:id}));},40);
+    }
+    tabs.forEach(function(t,k){
+      t.addEventListener('click',function(){show(t.dataset.tab);});
+      t.addEventListener('keydown',function(e){
+        var n=null; if(e.key==='ArrowRight')n=(k+1)%tabs.length; if(e.key==='ArrowLeft')n=(k+tabs.length-1)%tabs.length;
+        if(e.key==='Home')n=0; if(e.key==='End')n=tabs.length-1;
+        if(n!==null){e.preventDefault(); tabs[n].focus(); show(ids[n]);}
+      });
+    });
+    ids.forEach(function(id,k){
+      var p=document.getElementById(id); var d=document.createElement('div'); d.className='pager';
+      if(k>0){var b=document.createElement('button'); b.type='button'; b.textContent='← '+tabs[k-1].textContent; b.addEventListener('click',function(){show(ids[k-1]);}); d.appendChild(b);} else {d.appendChild(Object.assign(document.createElement('span'),{className:'sp'}));}
+      d.appendChild(Object.assign(document.createElement('span'),{className:'sp'}));
+      if(k<ids.length-1){var c=document.createElement('button'); c.type='button'; c.textContent=tabs[k+1].textContent+' →'; c.addEventListener('click',function(){show(ids[k+1]);}); d.appendChild(c);}
+      p.querySelector('.wrap').appendChild(d);
+    });
+    document.addEventListener('click',function(e){
+      var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return;
+      var id=a.getAttribute('href').slice(1); if(ids.indexOf(id)>=0){e.preventDefault(); show(id);}
+    });
+    function fromHash(){ var h=location.hash.slice(1); show(ids.indexOf(h)>=0?h:ids[0],{push:false,scroll:false}); }
+    window.addEventListener('hashchange',fromHash);
+    fromHash();
   })();
 
   var btn=document.getElementById('themeBtn'), root=document.documentElement;
